@@ -1,6 +1,6 @@
 param(
-  [string]$Src = "src\bfs_grid.c",
-  [string]$CaseDir = "tests\bfs_grid"
+  [string]$Src = "src\valid_brackets.c",
+  [string]$CaseDir = "tests\valid_brackets"
 )
 
 gcc -O2 -Wall -Wextra -std=c11 $Src -o a.exe
