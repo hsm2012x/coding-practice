@@ -20,7 +20,7 @@ static inline bool pop_char(char *out){
     return true;
 }
 static inline bool match(char open, char close){
-    return (open=='('&&close==')') || (open=='['&&close==']') || (open=='{'&&close=='}');
+    return (open=='(' && close==')') || (open=='['&&close==']') || (open=='{'&&close=='}');
 }
 
 int main(void){

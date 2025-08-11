@@ -1,51 +1,75 @@
 #include <stdio.h>
-#include <string.h>
 #include <stdbool.h>
+#define MAX_L 200000
 
-#define MAXL 200000
+static char s[MAX_L + 5];
+static char stack_s[MAX_L + 5];
+static int top = -1;
+// pop, push, empty, reset
 
-static char s[MAXL + 5];
-static char st[MAXL + 5];
-static int top;
+bool push(char ch){
+    
+    if(top + 1 > MAX_L){
+        return 0;
+    }
+    stack_s[++top] = ch;
 
-static inline void reset_stack(void){ top = -1; }
-static inline bool push(char c){
-    if (top + 1 >= MAXL + 5) return false; // (여유분 포함)
-    st[++top] = c; 
-    return true;
-}
-static inline bool pop_char(char *out){
-    if (top < 0) return false;
-    *out = st[top--];
-    return true;
-}
-static inline bool match(char open, char close){
-    return (open=='('&&close==')') || (open=='['&&close==']') || (open=='{'&&close=='}');
+    return 1;
 }
 
+bool pop(char *ch){
+    if(top < 0){
+        return 0;
+    }
+    *ch = stack_s[top--];
+    return 1;
+}
+bool empty(void){
+    if (top ==-1)
+        return 1;
+    
+    return 0;
+}
+bool match(char open, char close){
+    return ( (open == '[' && close ==']') || (open == '(' && close ==')') ||  (open == '{' && close =='}') ) ;
+}
+void reset(void){
+    top = -1;
+}
 int main(void){
-    int T; 
-    if (scanf("%d", &T) != 1) return 0;
 
-    while (T--){
-        if (scanf("%200000s", s) != 1) return 0;
+    int T;
+    if(scanf("%d", &T) != 1) return 0;
 
-        reset_stack();
+    while(T--){
+        reset();
         bool ok = true;
-
-        for (int i = 0; s[i]; ++i){
-            char c = s[i];
-            if (c=='(' || c=='[' || c=='{'){
-                if (!push(c)){ ok = false; break; }          // 이론상 넘치지 않지만 습관화
-            } else if (c==')' || c==']' || c=='}'){
-                char t;
-                if (!pop_char(&t) || !match(t, c)){ ok = false; break; }
-            } else {
-                ok = false; break;                            // 허용 외 문자는 실패로 처리
+        
+        scanf("%s", s);
+        for(int i = 0; s[i]; i++){
+            char d1 = s[i];
+            if(d1 == '[' || d1 == '{' || d1 == '('){
+                if(!push(d1)){
+                    ok = false;
+                    break;
+                }
+            }
+            else if(d1 == '}' || d1 == ']' || d1 == ')'){
+                char d2;
+                if(!pop(&d2) || !match(d2, d1)){
+                    ok = false;
+                    break;                 
+                }
+            }
+            else{
+                ok = false;
+                break;
             }
         }
+        puts(ok && empty() ? "YES" : "NO");
 
-        puts(ok && top==-1 ? "YES" : "NO");
+
     }
     return 0;
+
 }
