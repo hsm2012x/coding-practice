@@ -33,3 +33,5 @@
 | 2025-08-11 | .\src\stack\NGE\nge.c | C | 출력불일�?| 케?�스:4.in | ?�현: .\run.ps1 -Src .\src\stack\NGE\nge.c -In C:\Users\sumin\Desktop\coding-practice\tests\nge\4.in |
 | 2025-08-11 | .\src\stack\NGE\nge.c | C | 출력불일�?| 케?�스:5.in | ?�현: .\run.ps1 -Src .\src\stack\NGE\nge.c -In C:\Users\sumin\Desktop\coding-practice\tests\nge\5.in |
 | 2025-08-11 | .\src\stack\NGE\nge.c | C | 출력불일�?| 케?�스:6.in | ?�현: .\run.ps1 -Src .\src\stack\NGE\nge.c -In C:\Users\sumin\Desktop\coding-practice\tests\nge\6.in |
+| 2025-08-21 | .\src\queue\card\card_2.c | C | 출력불일�?| 케?�스:1.in | ?�현: .\run.ps1 -Src .\src\queue\card\card_2.c -In C:\Users\sumin\Desktop\coding-practice\tests\valid_brackets\1.in |
+| 2025-08-21 | .\src\queue\card\card_2.c | C | 출력불일�?| 케?�스:2.in | ?�현: .\run.ps1 -Src .\src\queue\card\card_2.c -In C:\Users\sumin\Desktop\coding-practice\tests\valid_brackets\2.in |
